@@ -1,0 +1,57 @@
+## Setup a few nodes. One acts as the Master DNS server, while the secondand any new nodes that are added in the future act as Slave DNS servers.
+
+Primary(Master)
+## Operating System: CentOS 7 minimal server
+## Hostname: masterdns.ethan.local
+## IP Address: 
+
+Secondary(Slave)
+## Operating System: CentOS 7 minimal server
+## Hostname: secondarydns.ethan.local
+## IP Address: 
+
+Client
+## Operating System: Centos 7 Everything
+Hostname: client.ethan.local
+IP Address:
+
+# Install bind9 packages on the server.
+# yum install bind bind-utils -y
+
+## Configure DNS Server
+## vim /etc/named.conf
+
+## Create and Configure Zone files.
+## Create a Forward Zone at /var/named/forward.ethan
+## Create the Reverse Zone at /var/named/reverse.ethan
+
+## After these are created, Start the DNS Service
+## Systemctl enable named
+## Systemctl start named
+
+## Firewall Configuration
+## Make this on port 53
+
+## firewall-cmd --permanent --add-port=53/tcp
+## firewall-cmd --permanent --add-port=53/udp
+
+## Restart Firewall
+## firewall-cmd --reload
+
+## Configure the permissions, Ownership, and SELinux
+## chgrp named -R /var/named
+## chown -v root:named /etc/named.conf
+## restorecon -rv /var/named
+## restorecon /etc/named.conf
+
+## Test DNS config and zone files for syntax errors
+## named-checkconf /etc/named.conf
+## named-checkzone ethan.local /var/named/forward.ethan
+
+## If an error message: Failed to start LSB: Bring up/down networking" occrurs try the following:
+## systemctl stop NetworkManager
+## systemctl start restart network
+
+## Running the command nslookup returns the following
+## ERROR: Server cannot find ethan.local :NXDOMAIN
+
