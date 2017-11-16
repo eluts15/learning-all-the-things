@@ -1,0 +1,36 @@
+## The objective of this is to set up a pipeline using GCP to deploy a hello world application.
+
+## Requires the following services
+  -- Github
+  -- GCP
+
+## The following gcp services are enabled via gcloud
+
+gcloud services enable \
+  container.googleapis.com \
+  cloudapis.googleapis.com \
+  cloudbuild.googleapis.com \
+  sourcerepo.googleapis.com \
+  compute.googleapis.com \
+  storage-component.googleapis.com \
+  containerregistry.googleapis.com \
+  cloudkms.googleapis.com \
+  logging.googleapis.com \
+  --async
+
+## Use the following command to view currently running gcp services.
+gcloud services list --enabled 
+
+## Create the Kubernetes clusters that represent our infrastructure pipeline
+  -- qa
+  -- prod
+  -- etc...
+
+## Run the following commands create the container clusters with the specified zones.
+## Zones can be found with the following command, 
+
+gcloud compute zones list
+gcloud container clusters create qa --zone us-west1-a
+gcloud container clusters create prod --zone us-west1-a 
+
+
