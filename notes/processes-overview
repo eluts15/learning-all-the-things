@@ -1,0 +1,41 @@
+Linux Processes
+
+# Spawning processes requires two bits of information.
+# Address space that is allocated to use
+# Kernal data structures such as: who spawned the process, priority info, allocation of resources.
+
+# PID
+A unique number to refer to each process.
+ID 1 is always init.  init is the original parent process that is run on boot.
+Every other ID is random and depends on what is available.
+
+# How processes are created.
+As soon as created, gets the next available PID
+All processes are spawned from a parent process (other than init which is the first process.)
+
+# UID (Which user owns this process?) 
+# EUID (Effective USERID)
+
+# NICENESS
+    - Priority?
+    - The higher the niceness, the lower priority
+
+# Useful for debugging
+    - which process is acting up, and who is it's parent process?
+    - looking at the parent process to diagnose issues in a child process
+
+# End of a process
+    - system call exit, kill the child process and notify parent that it's child is dead...
+
+
+Process Signals
+
+# The process in which work gets done.
+# How processes communicate to themselves to the kernel
+# If this signal is administered, run this chunk of code.
+
+#Useful commands
+killall
+
+# Kill all processes running as x user
+sudo pkill -u ethan

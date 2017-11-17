@@ -1,0 +1,47 @@
+- What is bash good for?
+    - Light tasks for automation
+    - doing backups
+    - 
+
+- Not for writing complex object oriented software
+
+- Use Shell scripting where appropriate
+    - if you are running 100 line bash files, it should be done in python/ruby
+
+- Things to be comfortable with
+    - pipes
+    - file descriptors: stdin, stdout, etc.
+    - writing something in a shell and redirecting to a file
+
+- Write something easy to read rather than clever and hard to read.
+
+- Bash & Programming
+    - cat hello.txt | wc -l
+
+- Variables and Quoting
+    - echo $HOME -- /home/eth0 the same as /home/usr/
+
+    - some_number=10
+    - echo $some_number -- 10
+
+- Starts to get weird....
+    - echo "This is my ${somenumber} beer!
+
+- Command Substitution
+
+-- Practical case: Get the number of lines in /path/to/file
+    - Example:
+        echo "there are X number of lines in /etc/shadow file" 
+        echo "there are 70 number of lines in /etc/shadow file"
+
+        $ num_lines=`ls $HOME | wc -l`
+        output: 13
+
+-- Scripting
+
+source is not the same as ./
+
+
+
+
+

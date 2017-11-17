@@ -1,0 +1,42 @@
+Administrating Linux 
+
+Useful things to know about when dealing with User accounts.
+Scenerios might include:
+    - creating new users
+    - disabling old users who no longer require access.
+    - setting up a users home directory
+
+Use sudo -i to login as the root user.
+On linux systems, the relevent files can be found under 
+    - etc/passwd
+    - etc/shadow
+    - etc/group
+    - etc/skel
+
+Run tail /etc/passwd
+To display the current logged in users.  Most of these users are used by the system.
+! symbol can be used to disable a user account.
+
+This can be done by doing the following:
+
+#Create a directory on home, specify directory and the default shell.
+useradd -m -d /home/ethan -s /bin/bash ethan
+
+# To view the changes, the user has been created, but is locked and no passowd has been set.
+tail /etc/shadow 
+
+# Setting the password with passwd
+passwd ethan
+
+# Now the ! will be removed and the passwod for the chosen user will be set.
+
+# Locking a user account.
+usermod -L ethan
+
+# Unlocking a user account.
+usermod -U ethan
+
+# Deleting user
+userdel ethan
+
+# This will delete the user account, but you still need to delete the home directory.

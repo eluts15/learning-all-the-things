@@ -1,0 +1,4 @@
+github.com:
+  - protocol: https
+    user: ${GITHUB_USERNAME}
+    oath_token: ${GITHUB_TOKEN}
